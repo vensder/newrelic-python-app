@@ -20,4 +20,4 @@ def catch_all(path):
   			<input type="submit" value="Submit">' % path
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
