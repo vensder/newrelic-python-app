@@ -6,7 +6,7 @@ COPY . /usr/src/app
 
 RUN pip install -r /usr/src/app/requirements.txt
 
-EXPOSE 8080
+EXPOSE 5000
 
 # CMD ["python","-u","application.py"]
 CMD ["newrelic-admin","run-program","application.py"]

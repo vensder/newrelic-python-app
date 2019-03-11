@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 
-from bottle import route, run, template
+from flask import Flask
+app = Flask(__name__)
 
-@route('/')
-def start():
-	return "Welcome to admin page"
-
-@route('/<anything>')
-def index(anything):
-	return template('<b>{{anything}}</b>\
-		</br>\
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return '<b>Welcome to %s admin page</b>\
+    </br>\
 			You need the authorization to access this page\
 		</br>\
 		</br>\
@@ -19,8 +17,7 @@ def index(anything):
 	  		User password:<br>\
 	  			<input type="password" name="psw">\
 		</form>\
-  			<input type="submit" value="Submit">',
-		anything=anything)
+  			<input type="submit" value="Submit">' % path
 
-run(host='0.0.0.0', port=8080)
-
+if __name__ == '__main__':
+    app.run()
