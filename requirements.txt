@@ -1,2 +1,2 @@
-bottle==0.12.16
+bottle==0.12.19
 newrelic==4.14.0.115
